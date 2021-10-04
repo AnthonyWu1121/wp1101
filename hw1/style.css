@@ -1,19 +1,69 @@
 html{
+    background-color: #383838;
+}
+
+body{
     background-color: black;
+    width: 90%;
+    margin: 5px auto;
+    padding: 0px 15px 15px 15px;
+}
+
+.title{
+    display: block;
+    color: wheat;
+    text-align: center;
+    font-size: 60px;
+    padding: 20px 0px;
+    border-bottom: 5px solid #383838;
 }
 
 img{
-    width: 60%;
-    height: 60%;
+    max-width: 100%;
+    transition: box-shadow 0.3s ease;
 }
 
-/* .one{
-    width: 200px;
-    height: 200px;
-}
-
-.two{
-    width: 150px;
-    height: 150px;
+/* img:hover {
+    box-shadow: 0 0 6px 3px #fff, 0 0 10px 6px #f0f, 0 0 14px 9px #0ff;
 } */
 
+.largerPic{
+    display: inline;
+    width: 50%;
+    height: auto;
+    margin: auto;
+    /* position: relative;
+    left: 80px; */
+}
+.largerPic:hover{
+    box-shadow: 0 0 6px 6px grey;
+}
+
+.smallerPic{
+    display: inline;
+    width: 300px;
+    height: 200px;
+}
+.smallerPic:hover{
+    box-shadow: 0 0 6px 6px grey;
+}
+#one{
+    position: relative;
+    top: auto;
+    left: 20px;
+}
+#two{
+    position: relative;
+    top: auto;
+    left: 20px;
+}
+#three{
+    position: relative;
+    top: auto;
+    left: 20px;
+}
+#four{
+    position: relative;
+    top: auto;
+    left: 20px;
+}
