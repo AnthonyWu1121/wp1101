@@ -6,12 +6,12 @@ body{
     background-color: black;
     width: 90%;
     margin: 5px auto;
-    padding: 0px 15px 15px 15px;
+    padding: 20px;
 }
 
 .title{
     display: block;
-    color: wheat;
+    color: 	#C0C0C0;
     text-align: center;
     font-size: 60px;
     padding: 20px 0px;
@@ -22,48 +22,50 @@ img{
     max-width: 100%;
     transition: box-shadow 0.3s ease;
 }
+img:hover{
+    box-shadow: 0 0 8px 8px grey;
+}
 
-/* img:hover {
-    box-shadow: 0 0 6px 3px #fff, 0 0 10px 6px #f0f, 0 0 14px 9px #0ff;
-} */
+.albumContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #282828;
+}
+.largePicContainer{
+    display: block;
+}
 
 .largerPic{
-    display: inline;
-    width: 50%;
-    height: auto;
+    position: relative;
+    left: -40px;
+    width: 80%;
     margin: auto;
-    /* position: relative;
-    left: 80px; */
 }
 .largerPic:hover{
-    box-shadow: 0 0 6px 6px grey;
+    position: relative;
+    top: 0px;
+    left: -150px;
+    width: 110%;
+}
+
+.smallPicContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    background-color: #383838;
+    justify-content: center;
+    align-items: center;
+    width: 380px;
+    height: auto;
 }
 
 .smallerPic{
-    display: inline;
-    width: 300px;
-    height: 200px;
+    width: 80%;
+    margin: 10px;
 }
 .smallerPic:hover{
-    box-shadow: 0 0 6px 6px grey;
-}
-#one{
-    position: relative;
-    top: auto;
-    left: 20px;
-}
-#two{
-    position: relative;
-    top: auto;
-    left: 20px;
-}
-#three{
-    position: relative;
-    top: auto;
-    left: 20px;
-}
-#four{
-    position: relative;
-    top: auto;
-    left: 20px;
+    position:relative;
+    width: 110%;
 }
