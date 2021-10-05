@@ -13,7 +13,7 @@ body{
     display: block;
     color: 	#C0C0C0;
     text-align: center;
-    font-size: 60px;
+    font-size: 70px;
     padding: 20px 0px;
     border-bottom: 5px solid #383838;
 }
@@ -33,21 +33,20 @@ img:hover{
     align-items: center;
     background-color: #282828;
 }
-.largePicContainer{
-    display: block;
-}
 
+.largePicContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
 .largerPic{
-    position: relative;
-    left: -40px;
     width: 80%;
     margin: auto;
 }
 .largerPic:hover{
     position: relative;
-    top: 0px;
-    left: -150px;
-    width: 110%;
+    width: 90%;
 }
 
 .smallPicContainer{
