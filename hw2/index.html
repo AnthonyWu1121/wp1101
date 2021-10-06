@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Photo Album</title>
+  <link
+    rel="stylesheet"
+    type="text/css"
+    media="screen"
+    href="styles.css"
+  />
+</head>
+<body>
+  <h1 class="title">Photo Album</h1>
+  <div class="albumContainer">
+      <div class="smallPicContainer">
+          <img class="smallerPic" id="one" src="images/idontknow.jpeg" alt="idontknow.jpeg" onclick=setImg(this.src,this.id)>
+          <img class="smallerPic" id="two" src="images/nochance.jpg" alt="nochance.jpg" onclick=setImg(this.src,this.id)>
+          <img class="smallerPic" id="three" src="images/sopoor.jpg" alt="sopoor.jpg" onclick=setImg(this.src,this.id)>
+          <img class="smallerPic" id="four" src="images/waitttt.jpg" alt="waitttt.jpg" onclick=setImg(this.src,this.id)>
+      </div>
+      <div class="largePicContainer">
+          <img id="largerPic" src="">
+      </div>
+      <div class="smallPicContainer">
+          <img class="smallerPic" id="five" src="images/what.jpg" alt="what.jpg" onclick=setImg(this.src,this.id)>
+          <img class="smallerPic" id="six" src="images/duck.jpg" alt="duck.jpg" onclick=setImg(this.src,this.id)>
+          <img class="smallerPic" id="seven" src="images/nice.jpeg" alt="nice.jpg" onclick=setImg(this.src,this.id)>
+          <img class="smallerPic" id="eight" src="images/oh.jpg" alt="oh.jpg" onclick=setImg(this.src,this.id)>
+      </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

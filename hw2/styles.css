@@ -22,14 +22,14 @@ img{
     max-width: 100%;
     transition: box-shadow 0.3s ease;
 }
-img:hover{
+/* img:hover{
     box-shadow: 0 0 8px 8px grey;
-}
+} */
 
 .albumContainer{
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: stretch;
     background-color: #282828;
 }
@@ -38,15 +38,11 @@ img:hover{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
 }
-.largerPic{
-    width: 80%;
+#largerPic{
+    width: 600px;
     margin: auto;
-}
-.largerPic:hover{
-    position: relative;
-    width: 90%;
 }
 
 .smallPicContainer{
@@ -65,6 +61,17 @@ img:hover{
     margin: 10px;
 }
 .smallerPic:hover{
+    box-shadow: 0 0 8px 8px grey;
     position:relative;
     width: 110%;
+}
+
+.selectedPic{
+    width: 80%;
+    margin: 10px;
+    opacity: 0.5;
+}
+.selectedPic:hover {
+    border-color: transparent !important;
+    cursor: not-allowed;
 }
