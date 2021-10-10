@@ -13,23 +13,20 @@
   />
 </head>
 <body>
-  <h1 class="title">Photo Album</h1>
+  <h1 class="title">Digital Photo Album</h1>
   <div class="albumContainer">
-      <div class="smallPicContainer">
-          <img class="smallerPic" id="one" src="images/idontknow.jpeg" alt="idontknow.jpeg" onclick=setImg(this.src,this.id)>
-          <img class="smallerPic" id="two" src="images/nochance.jpg" alt="nochance.jpg" onclick=setImg(this.src,this.id)>
-          <img class="smallerPic" id="three" src="images/sopoor.jpg" alt="sopoor.jpg" onclick=setImg(this.src,this.id)>
-          <img class="smallerPic" id="four" src="images/waitttt.jpg" alt="waitttt.jpg" onclick=setImg(this.src,this.id)>
-      </div>
-      <div class="largePicContainer">
-          <img id="largerPic" src="">
-      </div>
-      <div class="smallPicContainer">
-          <img class="smallerPic" id="five" src="images/what.jpg" alt="what.jpg" onclick=setImg(this.src,this.id)>
-          <img class="smallerPic" id="six" src="images/duck.jpg" alt="duck.jpg" onclick=setImg(this.src,this.id)>
-          <img class="smallerPic" id="seven" src="images/nice.jpeg" alt="nice.jpg" onclick=setImg(this.src,this.id)>
-          <img class="smallerPic" id="eight" src="images/oh.jpg" alt="oh.jpg" onclick=setImg(this.src,this.id)>
-      </div>
+    <div class="albumMenu">
+      <h6 class="albumName" id="album1" onclick=setAlbum(album1,this.id)>Album1</h6>
+      <h6 class="albumName" id="album2" onclick=setAlbum(album2,this.id)>Album2</h6>
+      <h6 class="albumName" id="album3" onclick=setAlbum(album3,this.id)>Album3</h6>
+      <h6 class="albumName" id="album3" onclick=setAlbum(album4,this.id)>Album4</h6>
+    </div>
+    <div class="largePicContainer">
+      <img id="largerPic" src="">
+    </div>
+    <div class="smallPicContainer" id="smallContainer">
+      
+    </div>
   </div>
 
   <script src="main.js"></script>
