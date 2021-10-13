@@ -11,6 +11,7 @@ let album1 = [
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAqiJzB05hGdx9BmHsf_FJjre32yaH6h1q0A&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuRMdvdw36GSLq0T-CVqj_RL9CUJ4J4HyZpg&usqp=CAU"
 ]
+album1["Name"] = "album1";
 
 let album2 = [
     "images/idontknow.jpeg",
@@ -22,6 +23,7 @@ let album2 = [
     "images/nice.jpeg",
     "images/oh.jpg"
 ]
+album2["Name"] = "album2";
 
 let album3 = [
     "https://obs.line-scdn.net/0h3wqvvei_bFhMD3rZLa8TD3ZZbzd_Y39bKDk9Ww9hMm9gaywJIj4kbm8HNz81bSsGIjkqP2gMd2k1PCgGcj0l/w644",
@@ -33,7 +35,9 @@ let album3 = [
     "https://img.league-funny.com/imgur/160344140393_n.jpg",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGtF9JwO0F854RVJmsj5oHNbmAAr94NaFRV8XYWAnmTCkSzFiYY2RJWnPna1pm27CvYgE&usqp=CAU"
 ]
+album3["Name"] = "album3";
 let album4 = []
+album4["Name"] = "album4";
 
 let displayImg = document.getElementById("largerPic");
 
@@ -51,15 +55,29 @@ function setImg(temp, id){
     selected.classList.add("selectedPic");
 }
 
+function clearImg(){
+    displayImg.src = "";
+}
+
 let albArray = [];
 function setAlbum(album, id){
     let len = album.length;
     if(len === 0){
         alert("This album is empty!");
+        if(albArray.length !== 0){
+            let prevAlb = document.getElementById(albArray[0]);
+            prevAlb.classList.remove("selectedAlbum");
+            albArray.shift();
+        }
+        let selected = document.getElementById(id);
+        albArray.push(id);
+        selected.classList.add("selectedAlbum");
+        deleteChild();
+        clearImg();
     }
     else{
         deleteChild();
-        for(let i in album){
+        for(var i = 0; i < len; i++){
             add_img(album[i], i);
         }
         setImg(album[0], "smallerPic0");
@@ -93,5 +111,30 @@ function deleteChild() {
         child = e.lastElementChild; 
     } 
 } 
+
+function add_new_img(){
+    let newURL = prompt("What is the path of the new photo?")
+
+    if(album1.Name === albArray[0]){
+        add_img(newURL, album1.length);
+        setImg(newURL, "smallerPic" + album1.length);
+        album1.push(newURL);
+    }
+    else if(album2.Name === albArray[0]){
+        add_img(newURL, album2.length);
+        setImg(newURL, "smallerPic" + album2.length);
+        album2.push(newURL);
+    }
+    else if(album3.Name === albArray[0]){
+        add_img(newURL, album3.length);
+        setImg(newURL, "smallerPic" + album3.length);
+        album3.push(newURL);
+    }
+    else if(album4.Name === albArray[0]){
+        add_img(newURL, album4.length);
+        setImg(newURL, "smallerPic" + album4.length);
+        album4.push(newURL);
+    }
+}
 
 setAlbum(album1, "album1");
