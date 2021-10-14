@@ -33,6 +33,16 @@ img{
     height: 675px;
 }
 
+.leftContainer{
+    display: flex;
+    flex-direction: column;
+    background-color: #383838;
+    justify-content: space-between;
+    align-items: center;
+    width: 20%;
+    height: 100%;
+}
+
 .albumMenu{
     display: flex;
     flex-direction: column;
@@ -40,9 +50,21 @@ img{
     background-color: #383838;
     justify-content: flex-start;
     align-items: center;
-    width: 15%;
+    width: 100%;
+    height: 95%;
+    overflow: hidden scroll;
 }
-
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px black; 
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px #c0c0c0; 
+}
 .albumName{
     display: block;
     text-align: center;
@@ -51,13 +73,13 @@ img{
     background-color: #C0C0C0;
     padding: 10px;
     margin: 20px;
-    width: 50%;
+    width: 60%;
     transition: box-shadow 0.3s ease;
 }
 .albumName:hover{
     box-shadow: 0 0 8px 8px grey;
-    position:relative;
-    width: 55%;
+    position: relative;
+    width: 65%;
 }
 
 .selectedAlbum{
@@ -65,16 +87,63 @@ img{
     color: #C0C0C0;
 }
 
+.albButtonContainer{
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+    background-color: #383838;
+    width: 97%;
+    height: 5%;
+    align-items: center;
+    justify-content: center;
+}
+#newAlbButton{
+    margin: 10px;
+    padding: 5px;
+    font-size: 2vh;
+    width: 60%;
+    color: #C0C0C0;
+    background-color: #383838;
+    position: relative;
+    left: -5px;
+}
+#removeAlbButton{
+    margin: 10px;
+    padding: 5px;
+    font-size: 2vh;
+    width: 60%;
+    color: #C0C0C0;
+    background-color: #383838;
+    position: relative;
+    left: -5px;
+}
+
+.middleContainer{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
 .largePicContainer{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 600px;
+    width: 100%;
 }
-.largerPic{
-    width: 70%;
+#largerPic{
+    width: 60%;
     height: auto;
+}
+#picNum{
+    display: block;
+    font-size: 2vh;
+    color: #C0C0C0;
+    position: relative;
+    top: 2vh;
 }
 
 .rightContainer{
@@ -128,8 +197,9 @@ img{
     cursor: not-allowed;
 } */
 
-.buttonContainer{
+.picButtonContainer{
     display: flex;
+    flex-direction: row;
     padding: 15px;
     background-color: #383838;
     width: 100%;
@@ -137,13 +207,23 @@ img{
     align-items: center;
     justify-content: center;
 }
-button{
+#newPicButton{
     margin: 10px;
     padding: 5px;
     font-size: 2vh;
     width: 60%;
-    color: #282828;
-    background-color: #C0C0C0;
+    color: #C0C0C0;
+    background-color: #383838;
+    position: relative;
+    left: -5px;
+}
+#removePicButton{
+    margin: 10px;
+    padding: 5px;
+    font-size: 2vh;
+    width: 60%;
+    color: #C0C0C0;
+    background-color: #383838;
     position: relative;
     left: -5px;
 }

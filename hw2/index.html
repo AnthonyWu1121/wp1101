@@ -15,19 +15,35 @@
 <body>
   <h1 class="title">Digital Photo Album</h1>
   <div class="albumContainer">
-    <div class="albumMenu">
-      <h6 class="albumName" id="album1" onclick=setAlbum(album1,this.id)>Album1</h6>
-      <h6 class="albumName" id="album2" onclick=setAlbum(album2,this.id)>Album2</h6>
-      <h6 class="albumName" id="album3" onclick=setAlbum(album3,this.id)>Album3</h6>
-      <h6 class="albumName" id="album4" onclick=setAlbum(album4,this.id)>Album4</h6>
+    <div class="leftContainer">
+      <div class="albumMenu">
+        <h6 class="albumName" id="album1" onclick=setAlbum(album1,this.id)>Album1</h6>
+        <h6 class="albumName" id="album2" onclick=setAlbum(album2,this.id)>Album2</h6>
+        <h6 class="albumName" id="album3" onclick=setAlbum(album3,this.id)>Album3</h6>
+        <h6 class="albumName" id="album4" onclick=setAlbum(album4,this.id)>Album4</h6>
+        <h6 class="albumName" id="album5" onclick=setAlbum(album5,this.id)>Album5</h6>
+        <h6 class="albumName" id="album6" onclick=setAlbum(album6,this.id)>Album6</h6>
+        <h6 class="albumName" id="album7" onclick=setAlbum(album7,this.id)>Album7</h6>
+        <h6 class="albumName" id="album8" onclick=setAlbum(album8,this.id)>Album8</h6>
+        <h6 class="albumName" id="album9" onclick=setAlbum(album9,this.id)>Album9</h6>
+        <h6 class="albumName" id="album10" onclick=setAlbum(album10,this.id)>Album10</h6>
+      </div>
+      <div class="albButtonContainer">
+        <button id="newAlbButton" onclick=add_new_album()>Add Album</button>
+        <button id="removeAlbButton" onclick=delete_album()>Delete Album</button>
+      </div>
     </div>
-    <div class="largePicContainer">
-      <img id="largerPic" src="">
+    <div class="middleContainer">
+      <div class="largePicContainer">
+        <img id="largerPic" src="">
+      </div>
+      <div id="picNum"></div>
     </div>
     <div class="rightContainer">
       <div  class="smallPicContainer" id="smallContainer"></div>
-      <div class="buttonContainer">
-        <button id="newPicButton" onclick=add_new_img()>Add New Photo</button>
+      <div class="picButtonContainer">
+        <button id="newPicButton" onclick=add_new_img()>Add Photo</button>
+        <button id="removePicButton" onclick=delete_img()>Delete Photo</button>
       </div>
     </div>
   </div>
