@@ -70,7 +70,8 @@ footer.appendChild(view);
 footer.appendChild(clean);
 root.appendChild(footer);
 footer.style.display = "none";
-clear_button.style.display = "none";
+// clear_button.style.display = "none";
+clear_button.style.visibility = "hidden";
 
 input_bar.addEventListener('keypress', function (e) {
     let new_todo = input_bar.value;
@@ -98,9 +99,11 @@ function showFooter(){
         footer.style.display = "none";
     }
     if(completedCount !== 0){
-        clear_button.style.display = "";
+        // clear_button.style.display = "";
+        clear_button.style.visibility = "visible";
     }else{
-        clear_button.style.display = "none";
+        // clear_button.style.display = "none";
+        clear_button.style.visibility = "hidden";
     }
 }
 
