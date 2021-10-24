@@ -113,10 +113,10 @@ function addItem(new_todo){
     item.classList.add("todo-app__item");
     let check_box = document.createElement("div");
     check_box.classList.add("todo-app__checkbox");
-    check_box.onclick = function(){doneTodo(num, this.nextElementSibling);};
     let input = document.createElement("input");
     input.id = num;
     input.type = "checkbox";
+    input.onclick = function(){doneTodo(num, this.parentElement.nextElementSibling);};
     let label = document.createElement("label");
     label.htmlFor = num;
     check_box.appendChild(input);
