@@ -78,7 +78,7 @@ input[type='checkbox'] {
     margin: 0;
     /* 5*5=25 */
     max-height: 23em;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .todo-app__item {
