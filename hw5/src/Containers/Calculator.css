@@ -1,0 +1,53 @@
+html{
+    background-color: white;
+}
+
+body{
+    background-color: white;
+    /* width: 90%;
+    margin: 5px auto;
+    padding: 20px;
+    text-align: center; */
+}
+
+.calculatorContainer{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+/* .titleContainer{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+}
+.title{
+    color: #C0C0C0;
+    font-size: 7vh;
+    padding: 10px 0px;
+    border-bottom: 5px solid #383838;
+} */
+
+.showBlock{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    /* width: 80%;
+    background-color: aquamarine; */
+}
+/* .numShowBlock{
+    background-color: aquamarine;
+}
+.tempBlock{
+    background-color: aquamarine;
+} */
+
+.allButtonContainer{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
