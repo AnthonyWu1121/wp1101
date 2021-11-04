@@ -4,10 +4,11 @@ html{
 
 body{
     background-color: white;
-    /* width: 90%;
+    width: 90%;
     margin: 5px auto;
     padding: 20px;
-    text-align: center; */
+    align-content: center;
+    justify-content: center;
 }
 
 .calculatorContainer{
@@ -17,37 +18,75 @@ body{
     justify-content: center;
 }
 
-/* .titleContainer{
+.titleContainer{
     display: flex;
     flex-direction: row;
     align-content: center;
     justify-content: center;
 }
 .title{
-    color: #C0C0C0;
+    color: #9fddd5;
     font-size: 7vh;
     padding: 10px 0px;
-    border-bottom: 5px solid #383838;
-} */
+    border-bottom: 5px solid #7bc7bd;
+}
 
 .showBlock{
+    position: relative;
+    left: 30vw;
     display: flex;
     flex-direction: column;
     align-content: center;
     justify-content: center;
-    /* width: 80%;
-    background-color: aquamarine; */
+    width: 30vw;
+    padding: 5px;
 }
-/* .numShowBlock{
-    background-color: aquamarine;
+.numShowBlock{
+    display: block;
+    height: 6vh;
+    font-size: 4vh;
+    background-color: #beece6;
+    color: white;
+    text-align: right;
+    padding: 10px;
 }
 .tempBlock{
-    background-color: aquamarine;
-} */
+    display: block;
+    height: 6vh;
+    font-size: 4vh;
+    background-color: #beece6;
+    color: white;
+    text-align: right;
+    padding: 10px;
+}
 
 .allButtonContainer{
     display: flex;
     flex-direction: column;
     align-content: center;
     justify-content: center;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+}
+
+button{
+    height: 6vh;
+    width: 6vh;
+    margin: 1vh;
+    font-size: 4vh;
+    background-color: white;
+    border-color: #9fddd5;
+    color: #9fddd5;
+    border-radius: 12px;
+    border: none;
+}
+
+button:hover {
+    background-color: #9fddd5; /* Green */
+    color: white;
 }
