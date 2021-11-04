@@ -56,49 +56,22 @@ export default (boardSize, mineNum) => {
     {/* Warning: The value of any cell will not be bigger than 8 logically. */}
     {/* Testing: printBoard() */}
 
-    for(let i in mineLocations){
-        let x = i[0], y = i[1];
-        if(x === 0 && y === 0){
-            board[x][y + 1].value++;
-            board[x + 1][y].value++;
-            board[x + 1][y + 1].value++;
-        }else if(x === boardSize - 1 && y === boardSize - 1){
-            board[x - 1][y - 1].value++;
-            board[x][y - 1].value++;
-            board[x - 1][y].value++;
-        }else if(x === 0){
-            board[x][y - 1].value++;
-            board[x][y + 1].value++;
-            board[x + 1][y - 1].value++;
-            board[x + 1][y].value++;
-            board[x + 1][y + 1].value++;
-        }else if(y === 0){
-            board[x - 1][y].value++;
-            board[x - 1][y + 1].value++;
-            board[x][y + 1].value++;
-            board[x + 1][y].value++;
-            board[x + 1][y + 1].value++;
-        }else if(x === boardSize - 1){
-            board[x - 1][y - 1].value++;
-            board[x - 1][y].value++;
-            board[x - 1][y + 1].value++;
-            board[x][y - 1].value++;
-            board[x][y + 1].value++;
-        }else if(y === boardSize - 1){
-            board[x - 1][y - 1].value++;
-            board[x - 1][y].value++;
-            board[x][y - 1].value++;
-            board[x + 1][y - 1].value++;
-            board[x + 1][y].value++;
-        }else{
-            board[x - 1][y - 1].value++;
-            board[x - 1][y].value++;
-            board[x - 1][y + 1].value++;
-            board[x][y - 1].value++;
-            board[x][y + 1].value++;
-            board[x + 1][y - 1].value++;
-            board[x + 1][y].value++;
-            board[x + 1][y + 1].value++;
+    let lenp = mineLocations.length;
+    for(let i = 0; i < lenp; i++){
+        let [x, y] = mineLocations[i];
+        for(let k = -1; k <= 1; k++){
+            let xp = x + k;
+            if(xp < 0 || xp >= boardSize){
+                continue;
+            }
+            for(let h = -1; h <= 1; h++){
+                let yp = y + k;
+                if(yp < 0 || yp >= boardSize){
+                    continue;
+                }else if(board[xp][yp].value !== '💣'){
+                    board[xp][yp].value += 1;
+                }
+            }
         }
     }
     printBoard();

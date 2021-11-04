@@ -19,15 +19,19 @@ const MineSweeper = () => {
     {/* Useful Hint: The four functions below only need to fill up with those three hook functions above. */}
     {/* -- TODO 1-2 -- */}
     const startGameOnClick = () => {
-        setStartGame(true);
+        if(mineNum > (boardSize ** 2)){
+            setStartGame(false);
+        }else{
+            setStartGame(true);
+        }
     }
     {/* -- TODO 6-2 -- */}
     const mineNumOnChange = (e) => {
-        setMineNum(e);
+        setMineNum(e.target.value);
     }
     {/* -- TODO 6-2 -- */}
     const boardSizeOnChange = (e) => {
-        setBoardSize(e)
+        setBoardSize(e.target.value);
     }
     {/* -- TODO 5-2 -- */}
     const backToHomeOnClick = () => {
@@ -40,7 +44,7 @@ const MineSweeper = () => {
                 {/* -- TODO 1-1 -- */} 
                 {/* Useful Hint: If ... <HomePage startGameOnClick = {startGameOnClick} .../> else <Board .../> */}
                 {/* Reminder: You can refer to the structure file in p.6 of Hack1.pdf. */}
-                <HomePage startGameOnClick={startGameOnClick()} mineNumOnChange={() => mineNumOnChange()} boardSizeOnChange={() => boardSizeOnChange()}
+                <HomePage startGameOnClick={startGameOnClick} mineNumOnChange={mineNumOnChange} boardSizeOnChange={boardSizeOnChange}
                     mineNum={mineNum} boardSize={boardSize}/>
             </div>
         );
@@ -50,7 +54,7 @@ const MineSweeper = () => {
                 {/* -- TODO 1-1 -- */} 
                 {/* Useful Hint: If ... <HomePage startGameOnClick = {startGameOnClick} .../> else <Board .../> */}
                 {/* Reminder: You can refer to the structure file in p.6 of Hack1.pdf. */}
-                <Board boardSize={boardSize} mineNum={mineNum} backToHome={backToHomeOnClick()}/>
+                <Board boardSize={boardSize} mineNum={mineNum} backToHome={backToHomeOnClick}/>
             </div>
         );
         

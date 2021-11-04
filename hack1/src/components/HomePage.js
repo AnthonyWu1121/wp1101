@@ -23,40 +23,64 @@ const HomePage = ({startGameOnClick, mineNumOnChange, boardSizeOnChange, mineNum
       }
     }
 
+    const errorControl = () => {
+      if(mineNum > (boardSize * boardSize)){
+        return(
+          <div className='error' style={{visibility: 'visible', color: '#880000'}}>ERROR: Mines number and board size are invalid</div>
+        );
+      }else{
+        return(
+          <div className='error' style={{visibility: 'hidden', color: '#880000'}}>ERROR: Mines number and board size are invalid</div>
+        );
+      }
+    }
+
+    const mineNumError = () => {
+      if(mineNum > (boardSize * boardSize)){
+        return(
+          <p className='controlNum' style={{color: '#880000'}}>{mineNum}</p>
+        );
+      }else{
+        return(
+          <p className='controlNum' style={{color: '#0f0f4b'}}>{mineNum}</p>
+        );
+      }
+    }
+
+    const boardNumError = () => {
+      if(mineNum > (boardSize * boardSize)){
+        return(
+          <p className='controlNum' style={{color: '#880000'}}>{boardSize}</p>
+        );
+      }else{
+        return(
+          <p className='controlNum' style={{color: '#0f0f4b'}}>{boardSize}</p>
+        );
+      }
+    }
+
     const visibleControlWrapper = () => {
       if(showPanel){
         return(
-          {visibility: 'visible'}
+          <div className='controlWrapper'>
+            {errorControl()}
+            <div className='controlPanel'>
+              <div className='controlCol'>
+                <p className='controlTitle'>Mines Number</p>
+                <input type='range' step='1' min='1' max='50' defaultValue='10' onChange={mineNumOnChange}/>
+                {mineNumError()}
+              </div>
+              <div className='controlCol'>
+                <p className='controlTitle'>Board Size (n×n)</p>
+                <input type='range' step='1' min='1' max='20' defaultValue='8' onChange={boardSizeOnChange}/>
+                {boardNumError()}
+              </div>
+            </div>
+          </div>
         );
       }else{
         return(
-          {visibility: 'hidden'}
-        );
-      }
-    }
-
-    const errorControl = () => {
-      if(error){
-        return(
-          {visibility: 'visible', color: '#880000'}
-        );
-      }else{
-        return(
-          {visibility: 'hidden', color: '#880000'}
-        );
-      }
-    }
-
-    const numError = () => {
-      if(mineNum > (boardSize * boardSize)){
-        setError(true);
-        return(
-          {color: '#880000'}
-        );
-      }else{
-        setError(false);
-        return(
-          {color: '#0f0f4b'}
+          <></>
         );
       }
     }
@@ -71,22 +95,8 @@ const HomePage = ({startGameOnClick, mineNumOnChange, boardSizeOnChange, mineNum
             {/* Useful Hint: Error color: '#880000', default text color: '#0f0f4b', invisible color: 'transparent' */}
             {/* Reminder: The defaultValue of 'mineNum' is 10, and the defaultValue of 'boardSize' is 8. */}
             <div className='controlContainer'>
-              <button className='btn' onClick={diffOnclick()}>Difficulty Adjustment</button>
-              <div className='controlWrapper' style={visibleControlWrapper()}>
-                <div className='error' style={errorControl()}>ERROR: Mines number and board size are invalid</div>
-                <div className='controlPanel'>
-                  <div className='controlCol'>
-                    <p className='controlTitle'>Mines Number</p>
-                    <input type='range' step='1' min='1' max='50' defaultValue='10' onChange={mineNumOnChange(this.value)}/>
-                    <p className='controlNum' style={numError()}>{mineNum}</p>
-                  </div>
-                  <div className='controlCol'>
-                    <p className='controlTitle'>Board Size (n×n)</p>
-                    <input type='range' step='1' min='1' max='20' defaultValue='8' onChange={boardSizeOnChange(this.value)}/>
-                    <p className='controlNum' style={numError()}>{boardSize}</p>
-                  </div>
-                </div>
-              </div>
+              <button className='btn' onClick={diffOnclick}>Difficulty Adjustment</button>
+              {visibleControlWrapper()}
             </div>
         </div>
     );

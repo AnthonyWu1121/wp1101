@@ -32,9 +32,10 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
     const freshBoard = () => {
         {/* -- TODO 3-1 -- */}
         {/* Useful Hint: createBoard(...) */}
-        let {b, m} = createBoard(boardSize, mineNum);
-        setBoard(b);
-        setMineLocations(m);
+        let val = createBoard(boardSize, mineNum);
+        setRemainFlagNum(mineNum);
+        setBoard(val.board);
+        setMineLocations(val.mineLocations);
     }
 
     const restartGame = () => {
@@ -76,8 +77,6 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
     return(
         <div className = 'boardPage' >
             <div className = 'boardWrapper' >
-            <h1>This is the board Page!</h1>  {/* This line of code is just for testing. Please delete it if you finish this function. */}
-            
             {/* -- TODO 3-1 -- */}
             {/* Useful Hint: The board is composed of BOARDSIZE*BOARDSIZE of Cell (2-dimention). So, nested 'map' is needed to implement the board.  */}
             {/* Reminder: Remember to use the component <Cell> and <Dashboard>. See Cell.js and Dashboard.js for detailed information. */}
@@ -85,7 +84,7 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
                 <div className='boardContainer'>
                     <Dashboard remainFlagNum={remainFlagNum} gameOver={gameOver}/>
                     {board.map((e, rowIndex) => <div id={'row'+rowIndex} style={{display:'flex'}}>
-                        {e.map((t, colIndex) => <Cell rowIdx={rowIndex} colIdx={colIndex} detail={t} updateFlag={updateFlag()} revealCell={revealCell()} />)}</div>)}
+                        {e.map((t, colIndex) => <Cell rowIdx={rowIndex} colIdx={colIndex} detail={t} updateFlag={updateFlag} revealCell={revealCell} />)}</div>)}
                 </div>
             </div>
         </div>
@@ -95,4 +94,4 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
 
 }
 
-export default Board
+export default Board;
