@@ -2,6 +2,21 @@
   text-align: center;
 }
 
+.startContainer{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -25px 0 0 -25px;
+}
+.gameContainer{
+  position: absolute;
+  left: 45%;
+  top: 45%;
+  margin: -40px 0 0 -40px;
+}
+
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

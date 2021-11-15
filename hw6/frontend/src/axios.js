@@ -13,12 +13,18 @@ const guess = async(number) => {
         return msg;
     }
     catch(error){
-
+        /*my turn*/
+        const msg = `Error! ${number} is not a valid number (1 - 100)`;
+        return msg;
+        /*my turn*/
     }
 }
 
-    const restart = async () => {
+const restart = async () => {
+    /*my turn*/
+    const {data: {msg}} = await instance.post('/restart');
+    return msg;
+    /*my turn*/
+}
 
-    }
-
-export {startGame, guess, restart}
+export {startGame, guess, restart};
