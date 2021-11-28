@@ -13,9 +13,6 @@ router.delete('/clear-db', async (_, res) => {
 
 router.post('/create-card', async (req, res) => {
     console.log('create body = ', req.body);
-    // const name = req.body.name;
-    // const subject = req.body.subject;
-    // const score = req.body.score;
     const {name, subject, score} = req.body;
     const val = await createScoreCard(name, subject, score);
     res.json({message: val.msg, card: val.card});
