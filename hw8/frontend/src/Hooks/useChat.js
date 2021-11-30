@@ -24,6 +24,14 @@ const useChat = () => {
                 setStatus(payload);
                 break;
             }
+            case 'init': {
+                setMessages(() => payload);
+                break;
+            }
+            case 'cleared': {
+                setMessages([]);
+                break;
+            }
             default: break;
         }
     }
@@ -32,10 +40,16 @@ const useChat = () => {
         console.log(payload);
         sendData(["input", payload])
     }
+
+    const clearMessages = () => {
+        sendData(['clear']);
+    }
+
     return{
         status,
         messages,
-        sendMessage
+        sendMessage,
+        clearMessages
     };
 };
 

@@ -1,25 +1,38 @@
 import http from 'http';
 import express from 'express';
 import dotenv from  'dotenv-defaults';
-import { mongoose } from "mongoose";
+import mongoose from "mongoose";
 import WebSocket from "ws";
-import Message from './models/message';
+import Message from './models/message.js';
+import {sendData, sendStatus, initData} from './wssConnect.js';
 
 //10:50
 dotenv.config();
 
-mongoose.connection(process.env.MONGO_URL, );
+mongoose.connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+}).then((res) => console.log("mongo db connection created"));
+
+const broadcastMessge = (data, status) => {
+    wss.clients.forEach((client) => {
+        sendData(data, client);
+        sendStatus(status, client);
+    })
+}
+
 const db = mongoose.connection;
 const app = express();
 const server = http.createServer(app);
 const wss = new WebSocket.Server({server});
 
-
 db.once('open', () => {
+    console.log('MongoDB connected!');
     wss.on('connection', (ws) => {
+        initData(ws);
         ws.onmessage = async (byteString) => {
-            const {data} = byteString
-            const [task, payload] = JSON.parse(data)
+            const {data} = byteString;
+            const [task, payload] = JSON.parse(data);
             switch (task){
                 case 'input':{
                     const {name, body} = payload
@@ -34,12 +47,34 @@ db.once('open', () => {
                         type: 'success',
                         msg: 'Message sent.'
                     }, ws)
+                    broadcastMessge(['output', [payload]], {
+                        type: 'success',
+                        msg: 'Message sent.'
+                    })
+                    break
                 }
-                break
+                case 'clear': {
+                    Message.deleteMany({}, () => {
+                        sendData(['cleared'])
+                        sendStatus({
+                            type: 'info',
+                            msg: 'Message cache cleared.'
+                        })
+                    })
+                    broadcastMessge(['cleared'], {
+                        type: 'info',
+                        msg: 'Message cache cleared.'
+                    })
+                    break
+                }
+                default: break
             }
-            await dbMessage.save();
         }
         sendData(['output', [payload]])
     })
-    server.listen(PORT, )
+
+    const PORT = process.env.port || 4000
+    server.listen(PORT, () => {
+        console.log(`Server is up on port ${PORT}!`);
+    })
 })

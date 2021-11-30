@@ -2,6 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
@@ -18,5 +19,8 @@
     "@babel/plugin-transform-arrow-functions": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
     "dotenv-defaults": "^3.0.0"
+  },
+  "scripts": {
+    "server": "nodemon server.js --ext js --watch src --exec babel-node"
   }
 }
