@@ -2,12 +2,6 @@ import { useState } from 'react';
 
 const client = new WebSocket('ws://lacalhost:4000')
 
-const sendData = async (data) => {
-    await client.send(
-        JSON.stringify(data)
-    );
-};
-
 const useChat = () => {
     const [messages, setMessages] = useState([]);
     const [status, setStatus] = useState({});
@@ -35,6 +29,10 @@ const useChat = () => {
             default: break;
         }
     }
+
+    const sendData = async (data) => {
+        await client.send(JSON.stringify(data));
+    };
 
     const sendMessage = (payload) => {
         console.log(payload);

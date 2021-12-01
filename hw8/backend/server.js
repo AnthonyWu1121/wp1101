@@ -2,7 +2,7 @@ import http from 'http';
 import express from 'express';
 import dotenv from  'dotenv-defaults';
 import mongoose from "mongoose";
-import WebSocket from "ws";
+import {WebSocketServer} from "ws";
 import Message from './models/message.js';
 import {sendData, sendStatus, initData} from './wssConnect.js';
 
@@ -24,7 +24,7 @@ const broadcastMessge = (data, status) => {
 const db = mongoose.connection;
 const app = express();
 const server = http.createServer(app);
-const wss = new WebSocket.Server({server});
+const wss = new WebSocketServer({server});
 
 db.once('open', () => {
     console.log('MongoDB connected!');

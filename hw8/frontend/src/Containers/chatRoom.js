@@ -1,14 +1,24 @@
 import Title from '../Components/Title'
 import Message from '../Components/Message'
+import useChat from '../Hooks/useChat'
 
 import { Button, Input, Tag } from 'antd'
+import { useState, useEffect, useRef } from 'react'
 
+const Chatroom = ({appMe, displayStatus}) => {
+    const {status, messages, sendMessage, clearMessages} = useChat()
 
-const Chatroom = ({messages, username, setUsername, body, setBody, sendMessage, bodyRef, displayStatus, clearMessages}) => {
+    const [username, setUsername] = useState('')
+    const [body, setBody] = useState('')
+
+    useEffect(() => {displayStatus(status)}, [status])
+
+    const bodyRef = useRef(null)
+
     return (
     <>
         <Title>
-            <h1>Simple Chat</h1>
+            <h1>{appMe}'s Chatroom</h1>
             <Button type="primary" danger onClick={clearMessages}>
                 Clear
             </Button>
@@ -26,7 +36,7 @@ const Chatroom = ({messages, username, setUsername, body, setBody, sendMessage, 
         </Message>
         <Input
             placeholder="Username"
-            value={username}
+            value={username || appMe}
             onChange={(e) => setUsername(e.target.value)}
             onKeyDown={(e) => {
                 if (e.key === 'Enter') {
@@ -35,14 +45,14 @@ const Chatroom = ({messages, username, setUsername, body, setBody, sendMessage, 
             }}
             style={{ marginBottom: 10 }}
         ></Input>
-        <Input.Search // const { Search } = Input (destructed component)
+        <Input.Search
             ref={bodyRef}
             value={body}
             onChange={(e) => setBody(e.target.value)}
             enterButton="Send"
             placeholder="Type a message here..."
             onSearch={(msg) => {
-                if(!msg || !username){
+                if(!msg || !(appMe || username)){
                     displayStatus({
                         type: 'error',
                         msg: 'Please enter a username and a message body.'
