@@ -29,12 +29,13 @@ const wss = new WebSocketServer({server});
 db.once('open', () => {
     console.log('MongoDB connected!');
     wss.on('connection', (ws) => {
-        initData(ws);
+        // initData(ws);
         ws.onmessage = async (byteString) => {
+            initData(ws);
             const {data} = byteString;
             const [task, payload] = JSON.parse(data);
             switch (task){
-                case 'input':{
+                case 'input': {
                     const {name, body} = payload
                     const message = new Message({name, body})
                     try{
@@ -42,11 +43,11 @@ db.once('open', () => {
                     }catch(e){
                         throw new Error("Message DB save error: " + e);
                     }
-                    sendData(['output', [payload]], ws)
-                    sendStatus({
-                        type: 'success',
-                        msg: 'Message sent.'
-                    }, ws)
+                    // sendData(['output', [payload]], ws)
+                    // sendStatus({
+                    //     type: 'success',
+                    //     msg: 'Message sent.'
+                    // }, ws)
                     broadcastMessge(['output', [payload]], {
                         type: 'success',
                         msg: 'Message sent.'
@@ -55,22 +56,22 @@ db.once('open', () => {
                 }
                 case 'clear': {
                     Message.deleteMany({}, () => {
-                        sendData(['cleared'])
-                        sendStatus({
+                        // sendData(['cleared'], ws)
+                        // sendStatus({
+                        //     type: 'info',
+                        //     msg: 'Message cache cleared.'
+                        // }, ws)
+                        broadcastMessge(['cleared'], {
                             type: 'info',
                             msg: 'Message cache cleared.'
                         })
                     })
-                    broadcastMessge(['cleared'], {
-                        type: 'info',
-                        msg: 'Message cache cleared.'
-                    })
+                    
                     break
                 }
                 default: break
             }
         }
-        sendData(['output', [payload]])
     })
 
     const PORT = process.env.port || 4000

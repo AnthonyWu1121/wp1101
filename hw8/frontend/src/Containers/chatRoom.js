@@ -8,7 +8,7 @@ import { useState, useEffect, useRef } from 'react'
 const Chatroom = ({appMe, displayStatus}) => {
     const {status, messages, sendMessage, clearMessages} = useChat()
 
-    const [username, setUsername] = useState('')
+    // const [username, setUsername] = useState('')
     const [body, setBody] = useState('')
 
     useEffect(() => {displayStatus(status)}, [status])
@@ -34,7 +34,7 @@ const Chatroom = ({appMe, displayStatus}) => {
                 ))
             )}
         </Message>
-        <Input
+        {/* <Input
             placeholder="Username"
             value={username || appMe}
             onChange={(e) => setUsername(e.target.value)}
@@ -44,7 +44,7 @@ const Chatroom = ({appMe, displayStatus}) => {
                 }
             }}
             style={{ marginBottom: 10 }}
-        ></Input>
+        ></Input> */}
         <Input.Search
             ref={bodyRef}
             value={body}
@@ -52,14 +52,14 @@ const Chatroom = ({appMe, displayStatus}) => {
             enterButton="Send"
             placeholder="Type a message here..."
             onSearch={(msg) => {
-                if(!msg || !(appMe || username)){
+                if(!msg || !(appMe /*|| username*/)){
                     displayStatus({
                         type: 'error',
                         msg: 'Please enter a username and a message body.'
                     })
                     return
                 }
-                sendMessage({name: username, body: msg})
+                sendMessage({name: /*username ||*/ appMe, body: msg})
                 setBody('')
             }}
         ></Input.Search>

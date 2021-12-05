@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const client = new WebSocket('ws://lacalhost:4000')
+const client = new WebSocket('ws://localhost:4000')
 
 const useChat = () => {
     const [messages, setMessages] = useState([]);
@@ -10,16 +10,18 @@ const useChat = () => {
         const {data} = byteString;
         const [task, payload] = JSON.parse(data);
         switch (task){
+            case 'init': {
+                console.log('fe init', payload);
+                setMessages(() => payload);
+                break;
+            }
             case 'output': {
+                console.log('fe output', payload);
                 setMessages(() => [...messages, ...payload]);
                 break;
             }
-            case "status": {
+            case 'status': {
                 setStatus(payload);
-                break;
-            }
-            case 'init': {
-                setMessages(() => payload);
                 break;
             }
             case 'cleared': {

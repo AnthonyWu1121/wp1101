@@ -10,9 +10,9 @@ const sendStatus = (payload, ws) => {
 
 const initData = (ws) => {
     Message.find().sort({created_at: -1}).limit(100).exec((err, res) => {
-        if(err) throw err
-
-        sendData(['init', res])
+        if(err) throw err;
+        console.log('be init', res);
+        sendData(['init', res], ws);
     })
 }
 
