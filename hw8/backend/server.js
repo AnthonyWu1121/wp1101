@@ -29,9 +29,8 @@ const wss = new WebSocketServer({server});
 db.once('open', () => {
     console.log('MongoDB connected!');
     wss.on('connection', (ws) => {
-        // initData(ws);
+        initData(ws);
         ws.onmessage = async (byteString) => {
-            initData(ws);
             const {data} = byteString;
             const [task, payload] = JSON.parse(data);
             switch (task){

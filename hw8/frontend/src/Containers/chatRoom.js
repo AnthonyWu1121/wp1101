@@ -1,17 +1,15 @@
 import Title from '../Components/Title'
 import Message from '../Components/Message'
-import useChat from '../Hooks/useChat'
 
 import { Button, Input, Tag } from 'antd'
 import { useState, useEffect, useRef } from 'react'
 
-const Chatroom = ({appMe, displayStatus}) => {
-    const {status, messages, sendMessage, clearMessages} = useChat()
+const Chatroom = ({appMe, displayStatus, status, messages, sendMessage, clearMessages}) => {
 
     // const [username, setUsername] = useState('')
     const [body, setBody] = useState('')
 
-    useEffect(() => {displayStatus(status)}, [status])
+    // useEffect(() => {displayStatus(status)}, [status])
 
     const bodyRef = useRef(null)
 
