@@ -4,6 +4,8 @@ import instance from './instance'
 import { Button, TextField } from '@material-ui/core'
 import { Delete as DeleteIcon, Send as SendIcon } from '@material-ui/icons'
 import { v4 as uuidv4 } from 'uuid'
+import { transformFile } from '@babel/core'
+import { ConfigContext } from 'antd/lib/config-provider'
 
 function Edit(props) {
   const [title, setTitle] = useState('')
@@ -11,10 +13,13 @@ function Edit(props) {
 
   // TODO 4-(2): complete handleSubmit function to create a new post and save it to database 
   const handleSubmit = async () => {
+    if(content.trim() === '' || title.trim() === ''){
+      return;
+    }
     const property = {
       postId: uuidv4(),
-      title: title,
-      content: content,
+      title: title.trim(),
+      content: content.trim(),
       timestamp: new Date()
     }
     console.log('fe newPost', property);
