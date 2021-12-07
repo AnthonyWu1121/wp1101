@@ -44,7 +44,6 @@ const App = () => {
     <Chatroom
       appMe={appMe}
       displayStatus={displayStatus}
-      status={status}
       messages={messages}
       sendMessage={sendMessage}
       clearMessages={clearMessages}

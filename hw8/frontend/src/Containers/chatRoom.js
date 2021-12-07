@@ -2,9 +2,9 @@ import Title from '../Components/Title'
 import Message from '../Components/Message'
 
 import { Button, Input, Tag } from 'antd'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef } from 'react'
 
-const Chatroom = ({appMe, displayStatus, status, messages, sendMessage, clearMessages}) => {
+const Chatroom = ({appMe, displayStatus, messages, sendMessage, clearMessages}) => {
 
     // const [username, setUsername] = useState('')
     const [body, setBody] = useState('')
@@ -53,7 +53,7 @@ const Chatroom = ({appMe, displayStatus, status, messages, sendMessage, clearMes
                 if(!msg || !(appMe /*|| username*/)){
                     displayStatus({
                         type: 'error',
-                        msg: 'Please enter a username and a message body.'
+                        msg: 'Please enter a message body.'/*'Please enter a username and a message body.'*/
                     })
                     return
                 }
