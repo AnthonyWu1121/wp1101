@@ -15,7 +15,7 @@ async function connect() {
   const db = mongoose.connection;
 
   db.once("open", () => {
-    // dataInit();
+    dataInit();
     console.log("Mongo databaase connected!");
   })
 }
