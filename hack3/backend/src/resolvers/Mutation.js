@@ -33,6 +33,9 @@ const Mutation = {
    * Delete a task by id
    */
   // TODO 5.2 Add a deleteTask function to resolve deleteTask
+  deleteTask: async (parent, { id }, { taskModel, pubSub }) => {
+
+  }
   // TODO 6.3 Add Subscription
 };
 

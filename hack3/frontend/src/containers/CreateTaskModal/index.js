@@ -50,13 +50,13 @@ export default function CreateTaskModal({ open, handleCloseCreateTaskModal }) {
     // TODO 4.2 Uncomment the following lines
     createTask({
       variables: {
-        input: {
+        // input: {
           id: uuidv4(),
           title: formData.title,
           content: formData.content,
           dueDate: parseInt(formData.dueDate.format("x")),
           status: TODO,
-        },
+        // },
       },
       refetchQueries: [GET_TASKS_QUERY], // refetch after createTask
       onCompleted: () => {
