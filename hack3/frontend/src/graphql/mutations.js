@@ -16,20 +16,10 @@ export const UPDATE_TASK_MUTATION = gql`
 // Uncomment the following lines and fill the gql part
 export const CREATE_TASK_MUTATION = gql`
   mutation CreateTask(
-    $id: ID!
-    $title: String!
-    $content: String!
-    $dueDate: Date!
-    $status: Status!
+    $input: CreateTaskInput!
   ) {
     createTask(
-      input: {
-        id: $id
-        title: $title
-        content: $content
-        dueDate: $dueDate
-        status: $status
-      }
+      input: $input
     ) {
       id
       title
