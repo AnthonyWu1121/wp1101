@@ -1,5 +1,3 @@
-//11:00
-
 const ChatBox = {
     messages(parent, args, {db}, info){
         return Promise.all(
@@ -10,3 +8,4 @@ const ChatBox = {
     },
 };
 
+export default ChatBox;
