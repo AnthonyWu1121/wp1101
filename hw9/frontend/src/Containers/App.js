@@ -40,7 +40,7 @@ const App = () => {
 
   const chatRoom = 
     <Chatroom
-      appMe={appMe}
+      me={appMe}
       displayStatus={displayStatus}
     />
 
