@@ -51,4 +51,5 @@ type Subscription {
   taskUpdated: Task!
   # Notify a task deleted
   # TODO 6.1 Add the taskDeleted subscription
+  taskDeleted: ID!
 }

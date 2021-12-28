@@ -12,7 +12,7 @@ import {
   TASK_CREATED_SUBSCRIPTION,
   TASK_UPDATED_SUBSCRIPTION,
   // TODO 6.5 Uncomment the following line
-  // TASK_DELETED_SUBSCRIPTION,
+  TASK_DELETED_SUBSCRIPTION,
 } from "../../graphql";
 import { useQuery, useMutation } from "@apollo/client";
 // constants
@@ -78,6 +78,21 @@ export default function Dashboard() {
   // subscription to task deleted
   useEffect(() => {
     // TODO 6.5 subscription logic
+    subscribeToMore({
+      document: TASK_DELETED_SUBSCRIPTION,
+      updateQuery: (prev, { subscriptionData }) => {
+        if (!subscriptionData.data) return prev;
+        const {
+          data: { taskDeleted },
+        } = subscriptionData;
+        return {
+          tasks: prev.tasks.map((task) => {
+            if (task.id !== taskDeleted.id) return task;
+            return ;
+          }),
+        };
+      },
+    });
   }, [subscribeToMore]);
 
   // graphql mutation function
