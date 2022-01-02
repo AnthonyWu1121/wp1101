@@ -1,5 +1,4 @@
-// 12-21-03 23:20
-// 25:25
+// 12-21-03 23:19, 25:25
 
 import Message from '../Components/Message';
 import { useEffect, useRef } from 'react';
@@ -53,13 +52,14 @@ const ChatBox = ({ me, friend, ...props }) => {
         } catch (e) {}
     }, [subscribeToMore]);
 
-    if(!loading) return <p>loading</p>
+    if(loading) return <p>loading</p>
 
     return (
         <Messages>
-            {data.chatBox.messages.map(({ sender: { name }, body }, i) => {
+            {/* {console.log('data = ', data)} */}
+            {data.chatBox.messages.map(({ sender: { name }, body }, i) => (
                 <Message me={me} name={name} body={body} key={name + body + i} />
-            })}
+            ))}
             <div ref={messageFooter} />
         </Messages>
     );

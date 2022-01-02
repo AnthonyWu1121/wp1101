@@ -1,22 +1,14 @@
+import {
+  makeName,
+} from './utility'
+
 const Subscription = {
-  comment: {
-    subscribe(parent, { postId }, { db, pubsub }, info) {
-      const post = db.posts.find(
-        (post) => post.id === postId && post.published,
-      );
-
-      if (!post) {
-        throw new Error('Post not found');
-      }
-
-      return pubsub.asyncIterator(`comment ${postId}`);
-    },
-  },
-  post: {
-    subscribe(parent, args, { pubsub }, info) {
-      return pubsub.asyncIterator('post');
+  message: {
+    subscribe: (parent, { from, to }, { pubsub }) => {
+      const chatBoxName = makeName(from, to);
+      return pubsub.asyncIterator(`chatBox ${chatBoxName}`);
     },
   },
 };
 
-export { Subscription as default };
+export default Subscription;

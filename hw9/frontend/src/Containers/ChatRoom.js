@@ -1,4 +1,4 @@
-// 12-21-03 14:13
+// 12-21-03 14:27, 15:10, 15:26
 
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
@@ -31,16 +31,15 @@ const ChatRoom = ({me, displayStatus}) => {
 
     const addChatBox = () => {
         setModalVisible(true);
-    }
+    };
 
     return (
     <>
         <Title>
             <h1>{me}'s Chatroom</h1>
-            <Button type="primary" danger>
+            {/* <Button type="primary" danger>
                 {" "}
-                {/* onClick={clearMessages} */}
-            </Button>
+            </Button> */}
         </Title>
         <>
             <Wrapper
@@ -57,11 +56,12 @@ const ChatRoom = ({me, displayStatus}) => {
                     }
                 }}
             >
-                {chatBoxes.map((friend) => {
+                {/* {console.log(chatBoxes)} */}
+                {chatBoxes.map((friend) => (
                     <Tabs.TabPane tab={friend} closable={true} key={friend}>
                         <ChatBox me={me} friend={friend} key={friend} />
                     </Tabs.TabPane>
-                })}
+                ))}
             </Wrapper>
             <ChatModal
                 visible={modalVisible}
@@ -94,7 +94,7 @@ const ChatRoom = ({me, displayStatus}) => {
                     });
                     return;
                 }
-                sendMessage({ variables: {name: me, body: msg}});
+                sendMessage({ variables: {from: me, to: activeKey, message: msg}});
                 setMessageInput('');
             }}
         />

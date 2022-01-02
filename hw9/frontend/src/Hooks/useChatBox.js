@@ -25,7 +25,7 @@ const useChatBox = () => {
                     ? ''
                     : chatBoxes[index - 1]
                 : activeKey
-            : targetKey //??????????????
+            : "" //???
     };
     
     return { chatBoxes, createChatBox, removeChatBox };
