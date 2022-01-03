@@ -23,7 +23,7 @@ const Wrapper = styled(Tabs)`
 const ChatRoom = ({me, displayStatus}) => {
     const [messageInput, setMessageInput] = useState("");
     const [activeKey, setActiveKey] = useState("");
-    const { chatBoxes, createChatBox, removeChatBox } = useChatBox();
+    const { chatBoxes, createChatBox, removeChatBox } = useChatBox(displayStatus);
     const [modalVisible, setModalVisible] = useState(false);
 
     const [startChat] = useMutation(CREATE_CHATBOX_MUTATION);
@@ -109,6 +109,10 @@ const ChatRoom = ({me, displayStatus}) => {
                 }
                 sendMessage({ variables: {from: me, to: activeKey, message: msg}});
                 setMessageInput('');
+                displayStatus({
+                    type: 'success',
+                    msg: 'Message sent.'
+                })
             }}
         />
     </>

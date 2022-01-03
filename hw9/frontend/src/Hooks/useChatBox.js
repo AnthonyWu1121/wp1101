@@ -2,13 +2,19 @@
 
 import { useState } from "react"
 
-const useChatBox = () => {
+const useChatBox = (displayStatus) => {
     // chatBoxes is an array of strings as friends
     const [chatBoxes, setChatBoxes] = useState([]);
 
     const createChatBox = (friend) => {
-        if (chatBoxes.some((name) => name === friend))
-            throw new Error(friend +"'s chat box has already opened.");
+        if (chatBoxes.some((name) => name === friend)){
+            displayStatus({
+                type: 'error',
+                msg: `${friend}'s chat box has already opened.`,
+            });
+            return;
+            // throw new Error(friend +"'s chat box has already opened.");
+        }
         
         setChatBoxes([...chatBoxes, friend]);
         return friend;
