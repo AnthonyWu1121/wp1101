@@ -1,14 +1,11 @@
 import { message } from 'antd'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import styled from 'styled-components'
 
-// import useChat from '../Hooks/useChat'
 import Chatroom from './ChatRoom'
 import SignIn from './SignIn'
 
 const App = () => {
-  // const {status, messages, sendMessage, clearMessages} = useChat()
-
   const [appMe, setAppMe] = useState('')
   const [appSignedIn, setAppSignedIn] = useState(false)
 

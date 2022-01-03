@@ -56,7 +56,6 @@ const ChatBox = ({ me, friend, ...props }) => {
 
     return (
         <Messages>
-            {/* {console.log('data = ', data)} */}
             {data.chatBox.messages.map(({ sender: { name }, body }, i) => (
                 <Message me={me} name={name} body={body} key={name + body + i} />
             ))}

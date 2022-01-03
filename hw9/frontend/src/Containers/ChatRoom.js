@@ -66,6 +66,13 @@ const ChatRoom = ({me, displayStatus}) => {
             <ChatModal
                 visible={modalVisible}
                 onCreate={async ({ name }) => {
+                    if(!name){
+                        displayStatus({
+                            type: 'error',
+                            msg: 'Please enter a name.',
+                        });
+                        return;
+                    }
                     await startChat({
                         variables: {
                             name1: me,
@@ -91,6 +98,12 @@ const ChatRoom = ({me, displayStatus}) => {
                     displayStatus({
                         type: 'error',
                         msg: 'Please enter message.',
+                    });
+                    return;
+                }else if(!activeKey){
+                    displayStatus({
+                        type: 'error',
+                        msg: 'Please open a chatbox.',
                     });
                     return;
                 }
